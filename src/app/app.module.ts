@@ -9,6 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
+import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NavComponent } from './components/nav/nav.component';
     CabeceraComponent,
     FooterComponent,
     NavComponent,
+    PagprincipalComponent,
   ],
   imports: [
     BrowserModule,
