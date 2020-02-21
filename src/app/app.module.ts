@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
+import { HistoriaComponent } from './components/historia/historia.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.co
     FooterComponent,
     NavComponent,
     PagprincipalComponent,
+    HistoriaComponent
   ],
   imports: [
     BrowserModule,
