@@ -13,6 +13,7 @@ import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.co
 import { HistoriaComponent } from './components/historia/historia.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
     NavComponent,
     PagprincipalComponent,
     HistoriaComponent,
-    ListadoComponent
+    ListadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
