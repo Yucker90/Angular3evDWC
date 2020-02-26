@@ -15,6 +15,7 @@ import { ListadoComponent } from './components/listado/listado.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './components/login/login.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StorageServiceModule
   ],
   providers: [AngularFirestore, FormBuilder],
   bootstrap: [AppComponent]

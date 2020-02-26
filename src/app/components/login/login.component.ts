@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { LoginService } from "src/app/services/login.service";
 import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
-import { FormGroupDirective } from "@angular/forms";
+import { WebStorageService, SESSION_STORAGE } from "angular-webstorage-service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginservice: LoginService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    @Inject(SESSION_STORAGE) private storage: WebStorageService
   ) {}
 
   ngOnInit() {
@@ -22,14 +23,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  compruebaUser() {
-    if (
-      this.loginservice.compruebaUsuario(
-        this.formulario.get("user").value,
-        this.formulario.get("pass").value
-      )
-    ) {
-      localStorage.setItem("logged", "true");
+  async compruebaUser() {
+    let user = this.formulario.get("user").value;
+    let pass = this.formulario.get("pass").value;
+    let logged = this.loginservice.compruebaUsuario(user, pass);
+    if (logged) {
+      
+      sessionStorage.setItem("logged", "true");
     }
   }
 }
