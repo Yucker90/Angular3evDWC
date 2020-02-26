@@ -13,6 +13,9 @@ import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.co
 import { HistoriaComponent } from './components/historia/historia.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { LoginComponent } from './components/login/login.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
     NavComponent,
     PagprincipalComponent,
     HistoriaComponent,
-    ListadoComponent
+    ListadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    StorageServiceModule
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
