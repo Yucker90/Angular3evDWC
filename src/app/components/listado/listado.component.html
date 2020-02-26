@@ -1,0 +1,14 @@
+<div class="container">
+  <table>
+      <tr>
+        <th>Titulo</th>
+        <th>Director</th>
+        <th>Año</th>
+      </tr>
+    <tr class="pelicula" *ngFor="let peli of peliculas">
+      <td class="titulo">{{ peli.Titulo }}</td>
+      <td class="director">{{ peli.Director }}</td>
+      <td class="year">{{peli.Year}}</td>
+    </tr>
+</table>
+</div>

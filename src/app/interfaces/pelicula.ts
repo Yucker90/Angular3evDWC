@@ -3,4 +3,5 @@ export interface Pelicula {
     director: string;
     espectadores: number;
     reparto: string[];
+    year: number;
 }

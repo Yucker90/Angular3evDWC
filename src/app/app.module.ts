@@ -11,6 +11,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { HistoriaComponent } from './components/historia/historia.component';
+import { ListadoComponent } from './components/listado/listado.component';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,15 @@ import { HistoriaComponent } from './components/historia/historia.component';
     FooterComponent,
     NavComponent,
     PagprincipalComponent,
-    HistoriaComponent
+    HistoriaComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
