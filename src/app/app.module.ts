@@ -17,6 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
+import { DetallesComponent } from './components/detalles/detalles.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     PagprincipalComponent,
     HistoriaComponent,
     ListadoComponent,
-    LoginComponent
+    LoginComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
