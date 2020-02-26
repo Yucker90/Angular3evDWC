@@ -1,20 +1,26 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { stringify } from 'querystring';
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class LoginService {
+  constructor(private firestore: AngularFirestore) {}
 
-  constructor(private firestore: AngularFirestore) { }
-
-  compruebaUsuario(user: string, pass: string): boolean{
-    let logged: boolean = false;
-    this.firestore.collection('usuarios').doc(user).snapshotChanges().subscribe(
-      (userSnapshot) => logged = userSnapshot.payload.data() == pass          
-    );
+  compruebaUsuario(user: string, pass: string) {
+    let logged: boolean;
+    let passFB = this.firestore.collection("usuarios").doc(user);
+    this.firestore
+      .collection("usuarios")
+      .doc(user)
+      .snapshotChanges()
+      .subscribe(userSnapshot => {
+        console.log(userSnapshot.payload.get("password"));
+        console.log(pass);
+        logged = userSnapshot.payload.get("password") == pass;
+        console.log(logged);
+        return logged;
+      });
     return logged;
   }
-
 }

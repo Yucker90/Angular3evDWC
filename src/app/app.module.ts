@@ -14,6 +14,7 @@ import { HistoriaComponent } from './components/historia/historia.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './components/login/login.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
