@@ -38,7 +38,7 @@ import { DetallesComponent } from './components/detalles/detalles.component';
     ReactiveFormsModule,
     StorageServiceModule
   ],
-  providers: [AngularFirestore, FormBuilder],
+  providers: [AngularFirestore, FormBuilder, Location],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

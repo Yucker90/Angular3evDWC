@@ -31,13 +31,5 @@ export class LoginService {
     let login = passfb.data().password == pass;
     console.log(login);
     return login;
-
-    /* return passfb.data;
-     this.logged = userSnapshot.payload.get("password") == pass;
-      console.log("Comprobación en servicio: " + this.logged);
-      return this.logged;
-        
-    });
-    return this.logged;*/
   }
 }
