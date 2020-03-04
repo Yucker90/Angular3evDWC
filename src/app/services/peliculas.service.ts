@@ -19,6 +19,9 @@ getPelicula(peliculaId: string){
   return this.firestore.collection('peliculas').doc(peliculaId).snapshotChanges();
 }
 
+addPelicula(pelicula: Pelicula): void{
+this.firestore.collection('peliculas').add(pelicula);
+}
 
-  get5PeliculasTaquilleras() {}
+get5PeliculasTaquilleras() {}
 }

@@ -18,6 +18,8 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
 import { DetallesComponent } from './components/detalles/detalles.component';
+import { RecordsComponent } from './components/records/records.component';
+import { FormpeliculaComponent } from './components/formpelicula/formpelicula.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DetallesComponent } from './components/detalles/detalles.component';
     HistoriaComponent,
     ListadoComponent,
     LoginComponent,
-    DetallesComponent
+    DetallesComponent,
+    RecordsComponent,
+    FormpeliculaComponent
   ],
   imports: [
     BrowserModule,
