@@ -54,4 +54,5 @@ export class FormpeliculaComponent implements OnInit {
 
     this.peliculasService.addPelicula(pelicula);
   }
+  // Hola
 }
