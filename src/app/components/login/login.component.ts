@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     let logged = this.loginservice.compruebaUsuario(user, pass);
     if (logged) {   
       sessionStorage.setItem("logged", "true");
-      this.router.navigateByUrl('/#');
+      this.router.navigateByUrl('/');
     }
   }
 }
