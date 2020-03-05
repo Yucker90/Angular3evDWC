@@ -14,7 +14,7 @@ import { HistoriaComponent } from './components/historia/historia.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './components/login/login.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
 import { DetallesComponent } from './components/detalles/detalles.component';
@@ -40,7 +40,8 @@ import { FormpeliculaComponent } from './components/formpelicula/formpelicula.co
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    FormsModule 
   ],
   providers: [AngularFirestore, FormBuilder, Location],
   bootstrap: [AppComponent]

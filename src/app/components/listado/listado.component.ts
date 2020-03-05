@@ -26,7 +26,6 @@ export class ListadoComponent implements OnInit {
           });
         
       });
-      console.log("Cargada: " + this.peliculas);
     });
   }
 }

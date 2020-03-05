@@ -5,6 +5,7 @@ import { DetallesComponent } from './components/detalles/detalles.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { HistoriaComponent } from './components/historia/historia.component';
 import { FormpeliculaComponent } from './components/formpelicula/formpelicula.component';
+import { RecordsComponent } from './components/records/records.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'formpelicula',
     component: FormpeliculaComponent
+  },
+  {
+    path: 'records',
+    component: RecordsComponent
   }
 ];
 

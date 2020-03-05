@@ -13,10 +13,27 @@ export class NavComponent implements OnInit {
     this.compruebaLogin();
   }
 
-  compruebaLogin(){
-    if(sessionStorage.getItem("logged")=="true"){
-      document.getElementById("formularioPelicula").hidden=false;
+  compruebaLogin() {
+    if (sessionStorage.getItem("logged") == "true") {
+      document.getElementById("formularioPelicula").hidden = false;
+      document.getElementById("cerrarSesion").hidden = false;
+      document.getElementById("login").hidden = true;
+      
+      if (sessionStorage.getItem("navRefrescado") == "true") {
+        console.log("refresh");
+        sessionStorage.setItem("navRefrescado", "false");
+        window.location.reload();
+      } else {
+        console.log("ya refrescado");
+
+      }
     }
+  }
+
+  logout() {
+    sessionStorage.setItem("logged", "false");
+    sessionStorage.setItem("navRefrescado", "true");
+    window.location.reload();
   }
 
 }

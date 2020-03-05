@@ -3,55 +3,33 @@
   <form [formGroup]="FormularioPeli">
     <div class="form-group">
       <label for="titulo">Titulo</label>
-      <input
-        type="text"
-        class="form-control"
-        id="titulo"
-        formControlName="titulo"
-        placeholder="Titulo de la película"
-      />
+      <input type="text" class="form-control" id="titulo" formControlName="titulo"
+        placeholder="Titulo de la película" />
     </div>
     <div class="form-group">
       <label for="director">Director</label>
-      <input
-        formControlName="director"
-        type="text"
-        class="form-control"
-        id="director"
-        placeholder="Director"
-      />
+      <input formControlName="director" type="text" class="form-control" id="director" placeholder="Director" />
     </div>
 
     <div class="form-group">
       <label for="year">Año</label>
-      <input
-        type="number"
-        class="form-control"
-        id="year"
-        placeholder="Año"
-        formControlName="year"
-      />
+      <input type="number" class="form-control" id="year" placeholder="Año" formControlName="year" />
     </div>
 
     <div class="form-group">
       <label for="espectadores">Espectadores</label>
-      <input
-        type="number"
-        class="form-control"
-        id="espectadores"
-        placeholder="Espectadores"
-        formControlName="espectadores"
-      />
+      <input type="number" class="form-control" id="espectadores" placeholder="Espectadores"
+        formControlName="espectadores" />
     </div>
 
     <button class="btn btn-primary" (click)="enviar()">Enviar</button>
   </form>
 
   <div id="formReparto">
-    <div class="form-group" id="actores">
-      <label for="reparto">Reparto</label>
-      <input type="text" id="actor1" class="form-control" placeholder="Actor 1" />
-    </div>
-    <button id="btnReparto" class="btn btn-info" (click)="addActor()">Añadir Actor</button>
+      <div class="form-group" id="actores">
+        <label for="reparto">Reparto</label>
+        <input type="text" class="form-control actor" placeholder="Actor 1" id="actor1" #actor/>
+      </div>
+      <button id="btnReparto" class="btn btn-info" (click)="addActor(actor.value)">Añadir Actor</button>
   </div>
 </div>

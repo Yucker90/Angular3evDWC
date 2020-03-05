@@ -1,7 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, FormControl, FormArray } from "@angular/forms";
-import { PeliculasService } from "src/app/services/peliculas.service";
-import { Pelicula } from "src/app/interfaces/pelicula";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { FormBuilder, FormControl, FormArray } from "@angular/forms";
+
 
 @Component({
   selector: "app-formpelicula",
@@ -17,16 +16,20 @@ export class FormpeliculaComponent implements OnInit {
   });
   reparto: string[] = [];
   repartoForm: FormArray;
-  numActores: number = 2;
+  numActores: number = 1;
 
   constructor(
     private formBuilder: FormBuilder,
-    private peliculasService: PeliculasService
-  ) {}
+  ) {
+  }
 
-  ngOnInit() {}
 
+  ngOnInit() { }
+
+
+  /*
   addActor(): void {
+    this.numActores++
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("class", "form-control");
@@ -34,15 +37,31 @@ export class FormpeliculaComponent implements OnInit {
     input.setAttribute("style", "margin-top: 5px");
     input.setAttribute("id", "actor" + this.numActores);
     document.getElementById("actores").appendChild(input);
-    this.numActores++;
+   ;
+  }
+*/
+
+  addActor(actor: string) {
+
+    this.reparto.push(actor);
+    let input = document.createElement("p");
+    input.appendChild(document.createTextNode(actor));
+    input.setAttribute("style", "margin-top: 3px");
+    input.setAttribute("id", "actor" + this.numActores);
+    document.getElementById("actores").appendChild(input);
+    console.log(this.reparto);
   }
 
+
   enviar() {
-    for (let i = 0; i <= this.numActores; i++) {
-      this.reparto.push(
-        document.getElementById("actor" + this.numActores).textContent
-      );
+    console.log(this.numActores);
+    let doc;
+    for (let i = 1; i <= this.numActores; i++) {
+      this.reparto.push();
+      console.log(doc.text);
     }
+
+    console.log(this.reparto);
 
     let pelicula = {
       titulo: this.FormularioPeli.get("titulo").value,
@@ -52,7 +71,9 @@ export class FormpeliculaComponent implements OnInit {
       reparto: this.reparto
     };
 
-    this.peliculasService.addPelicula(pelicula);
+    //this.peliculasService.addPelicula(pelicula);
+    console.log(pelicula);
+
   }
-  // Hola
+
 }

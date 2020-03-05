@@ -9,19 +9,18 @@ import { Pelicula } from "../interfaces/pelicula";
   providedIn: "root"
 })
 export class PeliculasService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
-getPeliculas(){
-  return this.firestore.collection('peliculas').snapshotChanges();
-}
+  getPeliculas() {
+    return this.firestore.collection('peliculas').snapshotChanges();
+  }
 
-getPelicula(peliculaId: string){
-  return this.firestore.collection('peliculas').doc(peliculaId).snapshotChanges();
-}
+  getPelicula(peliculaId: string) {
+    return this.firestore.collection('peliculas').doc(peliculaId).snapshotChanges();
+  }
 
-addPelicula(pelicula: Pelicula): void{
-this.firestore.collection('peliculas').add(pelicula);
-}
+  addPelicula(pelicula: Pelicula): void {
+    this.firestore.collection('peliculas').add(pelicula);
+  }
 
-get5PeliculasTaquilleras() {}
 }

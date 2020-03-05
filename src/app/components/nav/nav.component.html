@@ -10,13 +10,16 @@
       <a routerLink="catalogo">Nuestro catálogo</a>
     </li>
     <li>
-      <a href="#">Records</a>
+      <a routerLink="records">Records</a>
     </li>
     <li hidden id="formularioPelicula">
       <a routerLink="formpelicula">Añadir película</a>
     </li>
-    <li>
+    <li id="login">
       <a routerLink="login">Login</a>
     </li>
+<li hidden id="cerrarSesion">
+  <a routerLink="/" (click)="logout()">Cerrar sesión</a>
+</li>
   </ul>
 </nav>

@@ -16,22 +16,32 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     @Inject(SESSION_STORAGE) private storage: WebStorageService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       user: new FormControl(""),
       pass: new FormControl("")
     });
+
+    this.redireccionPorLogin();
+  }
+
+  
+  redireccionPorLogin() {
+    if (sessionStorage.getItem("logged") == "true")
+      this.router.navigateByUrl('/');
   }
 
   async compruebaUser() {
     let user = this.formulario.get("user").value;
     let pass = this.formulario.get("pass").value;
     let logged = this.loginservice.compruebaUsuario(user, pass);
-    if (logged) {   
+    if (logged) {
       sessionStorage.setItem("logged", "true");
-      this.router.navigateByUrl('/');
+      sessionStorage.setItem("navRefrescado", "true");
+      window.location.reload();
     }
+
   }
 }
