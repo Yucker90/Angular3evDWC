@@ -1,9 +1,13 @@
 <div class="container">
-    <form [formGroup]="formulario">
-        User: <input formControlName="user" id="Login" type="text">
-        Pass: <input formControlName="pass" id="LoginPass" type="password">
-        <button (click)="compruebaUser()" id="btnLogin" type="button">Login</button>
-    </form>
+  <form [formGroup]="formulario">
+    <div id="inputsForm">
+      <label>User: </label>
+      <input formControlName="user" id="Login" type="text" />
+      <label>Pass: </label>
+      <input formControlName="pass" id="LoginPass" type="password" />
+      <button (click)="compruebaUser()" id="btnLogin" type="button">
+        Login
+      </button>
+    </div>
+  </form>
 </div>
-
-

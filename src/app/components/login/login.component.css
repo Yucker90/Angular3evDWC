@@ -1,0 +1,35 @@
+#inputsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  align-content: center;
+  margin: 5% auto;
+}
+
+input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+label{
+    font-weight: bold;
+}
+
+button {
+  width: 10em;
+  height: 3em;
+  color: white;
+  text-shadow: 1px 0 black, 0 1px black, 1px 0 black, 0 1px black;
+  background: rgba(0,0,0,0);
+  background-image: radial-gradient(rgba(55, 86, 158, 1), rgba(255, 255, 255, 0));
+  border: none;
+}
+
+button:hover {
+    color: darkblue;
+    text-shadow: 1px 0 black, 0 1px black, 1px 0 black, 0 1px black;
+    background-image: radial-gradient(rgb(175, 23, 23), rgba(0, 0, 0, 0));
+    border: none;
+  }
