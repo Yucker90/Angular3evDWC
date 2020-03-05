@@ -1,0 +1,30 @@
+<div id="divExt">
+  <div *ngIf="pelicula" class="container grid">
+    <div id="titulo">
+      <h4 class="titulo">Titulo</h4>
+      <p>{{ pelicula.Titulo }}</p>
+    </div>
+    <div id="director">
+      <h4>Director</h4>
+      <p>{{ pelicula.Director }}</p>
+    </div>
+
+    <div id="reparto">
+      <h4>Reparto</h4>
+      <div *ngFor="let actor of reparto">
+        {{ actor }}
+      </div>
+    </div>
+
+    <div id="year">
+      <h4>Año</h4>
+      <p>{{ pelicula.Year }}</p>
+    </div>
+
+    <div id="recaudacion">
+      <h4>Recaudación</h4>
+      <p>{{ dinero }}</p>
+    </div>
+  </div>
+  <button id="btnVolver" class="btn btn-info" (click)="volver()">Volver</button>
+</div>

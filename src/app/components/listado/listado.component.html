@@ -6,9 +6,9 @@
         <th>Año</th>
       </tr>
     <tr class="pelicula" *ngFor="let peli of peliculas">
-      <td class="titulo">{{ peli.Titulo }}</td>
-      <td class="director">{{ peli.Director }}</td>
-      <td class="year">{{peli.Year}}</td>
+      <td class="titulo"><a [routerLink]="['/detalles', peli.id]">{{ peli.data.Titulo }}</a></td>
+      <td class="director">{{ peli.data.Director}}</td>
+      <td class="year">{{peli.data.Year}}</td>
     </tr>
 </table>
 </div>

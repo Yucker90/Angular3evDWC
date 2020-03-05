@@ -1,0 +1,11 @@
+.grid{
+    display: grid;
+}
+
+form{
+    grid-column: 1;
+}
+
+#formReparto{
+    grid-column: 2;
+}

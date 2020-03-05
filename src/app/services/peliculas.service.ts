@@ -15,21 +15,13 @@ getPeliculas(){
   return this.firestore.collection('peliculas').snapshotChanges();
 }
 
-  /* 
-  getPeliculas() {
-    let peliculas: any[] = [];
-    this.firestore
-      .collection("peliculas")
-      .snapshotChanges()
-      .subscribe(peliculaSnapshot => {
-        peliculas = [];
-        peliculaSnapshot.forEach(peliculaData => {
-          peliculas.push(peliculaData.payload.doc.data());
-          console.log("Cargada: " + peliculaData.payload.doc.id);
-        });
-      });
-    return peliculas;
-  }
-*/
-  get5PeliculasTaquilleras() {}
+getPelicula(peliculaId: string){
+  return this.firestore.collection('peliculas').doc(peliculaId).snapshotChanges();
+}
+
+addPelicula(pelicula: Pelicula): void{
+this.firestore.collection('peliculas').add(pelicula);
+}
+
+get5PeliculasTaquilleras() {}
 }

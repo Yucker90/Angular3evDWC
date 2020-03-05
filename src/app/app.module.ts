@@ -17,6 +17,10 @@ import { LoginComponent } from './components/login/login.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
+import { DetallesComponent } from './components/detalles/detalles.component';
+import { RecordsComponent } from './components/records/records.component';
+import { FormpeliculaComponent } from './components/formpelicula/formpelicula.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,10 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     PagprincipalComponent,
     HistoriaComponent,
     ListadoComponent,
-    LoginComponent
+    LoginComponent,
+    DetallesComponent,
+    RecordsComponent,
+    FormpeliculaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,7 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     ReactiveFormsModule,
     StorageServiceModule
   ],
-  providers: [AngularFirestore, FormBuilder],
+  providers: [AngularFirestore, FormBuilder, Location],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
