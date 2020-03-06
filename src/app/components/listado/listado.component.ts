@@ -26,9 +26,9 @@ export class ListadoComponent implements OnInit {
           });
       });
     });
-  }
-
-  borrarPelicula(id: string){
-    this.peliculasService.deletePelicula(id);
+    if (sessionStorage.getItem("logged") == "true")   {
+      for(let i = 0; i < document.getElementsByClassName("botonBorrar").length; i++) 
+      document.getElementsByClassName("botonBorrar")[i].setAttribute("hidden", "false");
+    }
   }
 }

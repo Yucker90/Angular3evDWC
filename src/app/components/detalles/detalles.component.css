@@ -57,3 +57,23 @@
   background-image: radial-gradient(rgb(175, 23, 23), rgba(0, 0, 0, 0));
   border: none;
 }
+
+#btnBorrar{
+  width: 10em;
+  height: 3em;
+  margin-left: 40%;
+  color: white;
+  text-shadow: 1px 0 black, 0 1px black, 1px 0 black, 0 1px black;
+  background-image: radial-gradient(rgb(158, 55, 55), rgba(0, 0, 0, 0));
+  border: none;
+  background-color: white;
+  margin-bottom: 3%;
+
+}
+
+#btnBorrar:hover {
+  color: rgb(20, 20, 20);
+  text-shadow: 1px 0 black, 0 1px black, 1px 0 black, 0 1px black;
+  background-image: radial-gradient(rgb(80, 4, 4), rgba(0, 0, 0, 0));
+  border: none;
+}

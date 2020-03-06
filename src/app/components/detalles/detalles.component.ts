@@ -13,7 +13,8 @@ export class DetallesComponent implements OnInit {
   constructor(
     private peliculasService: PeliculasService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   pelicula: any = "";
@@ -22,7 +23,13 @@ export class DetallesComponent implements OnInit {
   dinero: string = "";
 
   ngOnInit() {
+    this.compruebaLogin();
     this.getPelicula();
+  }
+  compruebaLogin() {
+    if(sessionStorage.getItem("logged")=="true"){
+      document.getElementById("btnBorrar").setAttribute("disabled", "false");
+      }
   }
 
   getPelicula() {
@@ -49,5 +56,12 @@ export class DetallesComponent implements OnInit {
 
   volver(){
     this.location.back();
+  }
+
+  borrar(){
+    const id = this.route.snapshot.paramMap.get("id");
+    this.peliculasService.deletePelicula(id);
+    this.router.navigateByUrl('/catalogo');
+
   }
 }
