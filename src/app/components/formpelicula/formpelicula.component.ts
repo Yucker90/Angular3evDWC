@@ -1,6 +1,7 @@
 import { Component, OnInit} from "@angular/core";
 import { FormBuilder, FormControl } from "@angular/forms";
 import { PeliculasService } from 'src/app/services/peliculas.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,20 +24,15 @@ export class FormpeliculaComponent implements OnInit {
   formActor: string;
 
   constructor(
-    private formBuilder: FormBuilder, private peliculasService: PeliculasService
+    private formBuilder: FormBuilder, private peliculasService: PeliculasService,
+    private router: Router
   ) {
   }
 
   ngOnInit() { }
 
-  addActor(actor: string) {
+  addActor() {
     this.numActores++;
-    /*
-    this.reparto.push(actor);
-    let input = document.createElement("p");
-    input.appendChild(document.createTextNode(actor));
-    */
-
    this.reparto.push(this.formActor);
    let input = document.createElement("p");
    input.appendChild(document.createTextNode("Actor "+ (this.numActores-1)+ ": " + this.formActor));
@@ -59,8 +55,7 @@ export class FormpeliculaComponent implements OnInit {
     };
 
     this.peliculasService.addPelicula(data);
-    console.log(data);
 
+    window.location.reload();
   }
-
 }

@@ -28,8 +28,8 @@
   <div id="formReparto">
       <div class="form-group" id="actores">
         <label for="reparto">Reparto</label>
-        <input type="text" [(ngModel)]="formActor" name="formActor" class="form-control actor" placeholder="Actor 1" id="actor" #actor/>
+        <input type="text" style="margin-bottom: 4px" [(ngModel)]="formActor" name="formActor" class="form-control actor" placeholder="Actor 1" id="actor"/>
       </div>
-      <button id="btnReparto" class="btn btn-info" (click)="addActor(actor.value)">Añadir Actor</button>
+      <button id="btnReparto" class="btn btn-info" (click)="addActor()">Añadir Actor</button>
   </div>
 </div>

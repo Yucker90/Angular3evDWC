@@ -22,17 +22,22 @@ export class RecordsComponent implements OnInit {
 
 
   getListadoPeliculas() {
+    let limit = 0;
     this.peliculasService.getPeliculas().subscribe(peliculaSnapshot => {
       this.peliculas = [];
       peliculaSnapshot.forEach(peliculaData => {
+        if(limit == 5){
+          return;
+        }
         this.pelicula = peliculaData.payload.doc.data() as Pelicula;
         this.peliculas.push({
           id: peliculaData.payload.doc.id,
           data: peliculaData.payload.doc.data(),
           recaudacion: (this.pelicula.Espectadores *5.5).toLocaleString('us-US', { style: 'currency', currency: 'USD' })
         });
+
         console.log((peliculaData.payload.doc.data() as Pelicula).espectadores);
-      });
+      limit++});
 
       this.ordenaPeliculas(this.peliculas);
     });
