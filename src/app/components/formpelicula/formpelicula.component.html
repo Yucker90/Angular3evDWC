@@ -28,7 +28,7 @@
   <div id="formReparto">
       <div class="form-group" id="actores">
         <label for="reparto">Reparto</label>
-        <input type="text" class="form-control actor" placeholder="Actor 1" id="actor1" #actor/>
+        <input type="text" [(ngModel)]="formActor" name="formActor" class="form-control actor" placeholder="Actor 1" id="actor" #actor/>
       </div>
       <button id="btnReparto" class="btn btn-info" (click)="addActor(actor.value)">Añadir Actor</button>
   </div>

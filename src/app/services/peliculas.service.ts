@@ -19,8 +19,8 @@ export class PeliculasService {
     return this.firestore.collection('peliculas').doc(peliculaId).snapshotChanges();
   }
 
-  addPelicula(pelicula: Pelicula): void {
-    this.firestore.collection('peliculas').add(pelicula);
+  addPelicula(data: {Titulo: string, Director: string, Year: number, Espectadores: number, Reparto: string[]}): void {
+    this.firestore.collection('peliculas').add(data);
   }
 
 }
