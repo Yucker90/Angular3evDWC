@@ -58,4 +58,7 @@ export class FormpeliculaComponent implements OnInit {
 
     window.location.reload();
   }
+
+
+
 }

@@ -7,9 +7,13 @@
     </tr>
 
     <tr class="pelicula" *ngFor="let peli of peliculas">
-      <td class="titulo"><a [routerLink]="['/detalles', peli.id]">{{ peli.data.Titulo }}</a></td>
+      <td class="titulo" #{{peli.id}}><a [routerLink]="['/detalles', peli.id]">{{ peli.data.Titulo }}</a></td>
       <td class="director">{{ peli.data.Director}}</td>
       <td class="year">{{peli.data.Year}}</td>
+      <td>
+        <div id="botonBorrar"><button class="btn btn-danger btnBorrarPeli" (click)="borrarPelicula(peli.id)">Borrar</button>
+        </div>
+      </td>
     </tr>
   </table>
 </div>

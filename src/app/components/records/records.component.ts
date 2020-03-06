@@ -12,6 +12,7 @@ export class RecordsComponent implements OnInit {
 
   public peliculas: any;
   pelicula: any = "";
+  peliculasMasTaquilleras: any[];
 
   constructor(private peliculasService: PeliculasService) { }
 
@@ -22,22 +23,17 @@ export class RecordsComponent implements OnInit {
 
 
   getListadoPeliculas() {
-    let limit = 0;
+
     this.peliculasService.getPeliculas().subscribe(peliculaSnapshot => {
       this.peliculas = [];
       peliculaSnapshot.forEach(peliculaData => {
-        if(limit == 5){
-          return;
-        }
         this.pelicula = peliculaData.payload.doc.data() as Pelicula;
         this.peliculas.push({
           id: peliculaData.payload.doc.id,
           data: peliculaData.payload.doc.data(),
-          recaudacion: (this.pelicula.Espectadores *5.5).toLocaleString('us-US', { style: 'currency', currency: 'USD' })
+          recaudacion: (this.pelicula.Espectadores * 5.5).toLocaleString('us-US', { style: 'currency', currency: 'USD' })
         });
-
-        console.log((peliculaData.payload.doc.data() as Pelicula).espectadores);
-      limit++});
+      });
 
       this.ordenaPeliculas(this.peliculas);
     });
@@ -45,6 +41,7 @@ export class RecordsComponent implements OnInit {
 
 
   ordenaPeliculas(peliculas: any) {
+    this.peliculasMasTaquilleras = [];
     peliculas.sort((n1, n2) => {
       if (n1.data.Espectadores > n2.data.Espectadores)
         return -1;
@@ -52,5 +49,9 @@ export class RecordsComponent implements OnInit {
         return 1;
       return 0;
     });
+
+    for (let i = 0; i < 5; i++) {
+      this.peliculasMasTaquilleras.push(peliculas[i]);
+    }
   }
 }

@@ -24,8 +24,11 @@ export class ListadoComponent implements OnInit {
           id: peliculaData.payload.doc.id,
            data: peliculaData.payload.doc.data()
           });
-        
       });
     });
+  }
+
+  borrarPelicula(id: string){
+    this.peliculasService.deletePelicula(id);
   }
 }

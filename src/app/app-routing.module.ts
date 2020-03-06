@@ -10,6 +10,10 @@ import { RecordsComponent } from './components/records/records.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: HistoriaComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

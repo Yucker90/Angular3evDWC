@@ -23,4 +23,8 @@ export class PeliculasService {
     this.firestore.collection('peliculas').add(data);
   }
 
+  deletePelicula(peliculaId: string){
+    this.firestore.collection('peliculas').doc(peliculaId).delete();
+  }
+
 }

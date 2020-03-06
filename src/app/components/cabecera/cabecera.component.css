@@ -1,7 +1,10 @@
 .cabecera{
     display: flex;
     flex-direction: column;
-    text-align: center;   
+    text-align: center;
+    border: 2px solid rgb(55, 86, 158);
+    text-shadow: 2px 2px 5px #000000;
+    box-shadow: 5px 5px 5px #000000;
 }
 
 .titulo{
