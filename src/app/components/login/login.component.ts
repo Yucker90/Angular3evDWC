@@ -1,20 +1,20 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { LoginService } from "src/app/services/login.service";
 import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
-import { WebStorageService, SESSION_STORAGE } from "angular-webstorage-service";
 import { Router } from '@angular/router';
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
+
 export class LoginComponent implements OnInit {
   formulario: FormGroup;
 
   constructor(
     private loginservice: LoginService,
     private formBuilder: FormBuilder,
-    @Inject(SESSION_STORAGE) private storage: WebStorageService,
     private router: Router
   ) { }
 
@@ -24,22 +24,33 @@ export class LoginComponent implements OnInit {
       pass: new FormControl("")
     });
 
+    // Explicación de éste método debajo
     this.redireccionPorLogin();
   }
 
-  
+  // Este método se usa en la carga del componente. Comprobamos si el usuario se ha logueado
+  // y si es así, lo redireccionamos a la página principal 
   redireccionPorLogin() {
     if (sessionStorage.getItem("logged") == "true")
       this.router.navigateByUrl('/');
   }
 
+  // Comprobamos que el user y el pass son correctos
+  // user: admin - pass: altair123
   async compruebaUser() {
     let user = this.formulario.get("user").value;
     let pass = this.formulario.get("pass").value;
     let logged = this.loginservice.compruebaUsuario(user, pass);
     if (logged) {
+
+      // Si nos hemos logueado con éxito, guardamos una variable de sesión que nos servirá para dar
+      // "privilegios" de administrador
       sessionStorage.setItem("logged", "true");
+
+      // Cargamos esta segunda variable para evitar un refresco de página infinito
       sessionStorage.setItem("navRefrescado", "true");
+      
+      // Refrescamos la página para que cambie el header
       window.location.reload();
     }
 

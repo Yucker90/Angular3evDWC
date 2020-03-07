@@ -26,12 +26,16 @@ export class DetallesComponent implements OnInit {
     this.compruebaLogin();
     this.getPelicula();
   }
+
+  // Este método debería habilitar el botón de Borrar película pero no funciona
+  // TODO
   compruebaLogin() {
     if(sessionStorage.getItem("logged")=="true"){
       document.getElementById("btnBorrar").setAttribute("disabled", "false");
       }
   }
 
+  // Obtenemos la película de la cual queremos ver los detalles
   getPelicula() {
     const id = this.route.snapshot.paramMap.get("id");
     this.peliculasService
@@ -39,7 +43,11 @@ export class DetallesComponent implements OnInit {
       .subscribe(
         peliSnapshot =>{
           (this.pelicula = peliSnapshot.payload.data() as Pelicula)
+          
+          // Obtenemos el reparto de la película y lo añadimos a un array para mostrarlo
           this.getReparto();
+          
+          // Calculamos la recaudación de la película suponiendo un precio por entrada de $5.5, y lo mostramos como dólares
           this.recaudacion = this.pelicula.Espectadores * 5.5;
           this.dinero = this.recaudacion.toLocaleString('us-US', { style: 'currency', currency: 'USD' });
         }
@@ -48,16 +56,19 @@ export class DetallesComponent implements OnInit {
 
   }
 
+  // Obtenemos el reparto de la película
   getReparto() {
     this.reparto = [];
     this.pelicula.Reparto.forEach(element => {this.reparto.push(element)   
     });
   }
 
+// Volvemos a la página anterior
   volver(){
     this.location.back();
   }
 
+// Borramos la película. Nota: El método deletePelicula funciona.
   borrar(){
     const id = this.route.snapshot.paramMap.get("id");
     this.peliculasService.deletePelicula(id);

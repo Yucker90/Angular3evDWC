@@ -16,6 +16,7 @@ export class ListadoComponent implements OnInit {
     this.getListadoPeliculas();
   }
 
+  // Obtenemos todas las películas de la BD
   getListadoPeliculas() {
     this.peliculasService.getPeliculas().subscribe(peliculaSnapshot => {
       this.peliculas = [];
@@ -26,6 +27,7 @@ export class ListadoComponent implements OnInit {
           });
       });
     });
+    // Si somos administradores (o estamos registrados) DEBERÍA poder dejarnos borrar una película
     if (sessionStorage.getItem("logged") == "true")   {
       for(let i = 0; i < document.getElementsByClassName("botonBorrar").length; i++) 
       document.getElementsByClassName("botonBorrar")[i].setAttribute("hidden", "false");
