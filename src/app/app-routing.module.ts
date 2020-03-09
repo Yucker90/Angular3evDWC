@@ -37,7 +37,7 @@ const routes: Routes = [
     path: "records",
     component: RecordsComponent
   },
-  { path: "edit:id", component: EditComponent }
+  { path: "edit/:id", component: EditComponent }
 ];
 
 @NgModule({

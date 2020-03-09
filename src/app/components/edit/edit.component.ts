@@ -14,6 +14,7 @@ export class EditComponent implements OnInit {
   director: string;
   titulo: string;
   anyo: number;
+  id: string;
   espectadores: number;
 
   constructor(
@@ -33,12 +34,12 @@ export class EditComponent implements OnInit {
       this.pelicula = peliSnapshot.payload.data() as Pelicula;
       this.getReparto();
     });
-
+/*
     this.titulo = this.pelicula.titulo;
     this.director = this.pelicula.director;
     this.espectadores = this.pelicula.espectadores;
     this.reparto = this.pelicula.reparto;
-    this.anyo = this.pelicula.year;
+    this.anyo = this.pelicula.year;*/
   }
 
   getReparto() {
