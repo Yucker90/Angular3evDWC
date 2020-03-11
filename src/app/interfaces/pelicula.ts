@@ -1,7 +1,7 @@
 export interface Pelicula {
-    titulo:string;
-    director: string;
-    espectadores: number;
-    reparto: string[];
-    year: number;
+    Titulo:string;
+    Director: string;
+    Espectadores: number;
+    Reparto: string[];
+    Year: number;
 }

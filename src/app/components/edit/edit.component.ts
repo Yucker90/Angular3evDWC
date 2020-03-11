@@ -18,6 +18,7 @@ export class EditComponent implements OnInit {
     anyo: new FormControl(''),
     espectadores: new FormControl('')
   });
+  tituloPelicula: string;
 
   constructor(
     private peliculasService: PeliculasService,
@@ -32,34 +33,53 @@ export class EditComponent implements OnInit {
 
   getPelicula() {
     this.reparto = [];
+    this.tituloPelicula = "";
     const id = this.route.snapshot.paramMap.get("id");
     this.peliculasService
       .getPelicula(id)
       .subscribe(peliSnapshot => {
-        this.pelicula= {
-          titulo: peliSnapshot.payload.data()['Titulo'],
-          director: peliSnapshot.payload.data()['Director'],
-          espectadores: peliSnapshot.payload.data()['Espectadores'],
-          year: peliSnapshot.payload.data()['Year'],
-          reparto: peliSnapshot.payload.data()['Reparto']
+        this.pelicula = {
+          Titulo: peliSnapshot.payload.data()['Titulo'],
+          Director: peliSnapshot.payload.data()['Director'],
+          Espectadores: peliSnapshot.payload.data()['Espectadores'],
+          Year: peliSnapshot.payload.data()['Year'],
+          Reparto: peliSnapshot.payload.data()['Reparto']
         };
-        this.getReparto();
-        console.log(this.pelicula);
+
+        console.log("Test 1: " + this.pelicula.Titulo);
+        this.tituloPelicula = this.pelicula.Titulo;
         this.formEditPelicula.setValue({
-          titulo: this.pelicula.titulo,
-          director: this.pelicula.director,
-          anyo: this.pelicula.year,
-          espectadores: this.pelicula.espectadores
+          titulo: this.pelicula.Titulo,
+          director: this.pelicula.Director,
+          anyo: this.pelicula.Year,
+          espectadores: this.pelicula.Espectadores
         });
+        console.log("Test 2: " + this.pelicula);
+
       });
-      
+    console.log("Test 3: " + this.pelicula);
   }
+
+
 
   getReparto() {
     this.reparto = [];
-    this.pelicula.reparto.forEach(element => {
+    this.pelicula.Reparto.forEach(element => {
       this.reparto.push(element);
     });
+  }
+
+  guardar() {
+    const id = this.route.snapshot.paramMap.get("id");
+
+    this.peliculasService.setPelicula(id,
+      {
+        Titulo: this.formEditPelicula.get('titulo').value,
+        Director: this.formEditPelicula.get('director').value,
+        Year: this.formEditPelicula.get('year').value,
+        Espectadores: this.formEditPelicula.get('espectadores').value,
+        Reparto: this.reparto
+      })
   }
 
 }
