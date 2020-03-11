@@ -1,4 +1,4 @@
-<div class="container grid">
+<div *ngIf="logged == 'ok'" class="container grid">
   <h3>Formulario de creación de una película</h3>
   <form [formGroup]="FormularioPeli">
     <div class="form-group">
@@ -22,7 +22,7 @@
         formControlName="espectadores" />
     </div>
 
-    <button class="btn btn-primary" (click)="enviar()">Enviar</button>
+    <button class="btn btn-primary" id="btnEnviar" (click)="enviar()">Enviar</button>
   </form>
 
   <div id="formReparto">

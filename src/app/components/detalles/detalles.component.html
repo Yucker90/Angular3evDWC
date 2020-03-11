@@ -25,15 +25,23 @@
       <h4>Recaudación</h4>
       <p>{{ dinero }}</p>
     </div>
-    <div id="btnEdit">
-      <a class="btn btn-link" [routerLink]="['/edit', id]">
-        Editar
-      </a>
-    </div>
-  </div>
-  <div hidden id="btnBorrar">
-    <button class="btn btn-danger" (click)="borrar()">Borrar</button>
-  </div>
 
-  <button id="btnVolver" class="btn btn-info" (click)="volver()">Volver</button>
+    <div id="botones">
+      <div id="edit" *ngIf="logged == 'ok'">
+        <a class="btn btn-info" id="btnEdit" [routerLink]="['/edit', id]">
+          Editar
+        </a>
+      </div>
+
+      <button id="btnVolver" class="btn btn-info" (click)="volver()">
+        Volver
+      </button>
+
+      <div *ngIf="logged == 'ok'" id="borrar">
+        <button id="btnBorrar" class="btn" (click)="borrar()">Borrar</button>
+      </div>
+    </div>
+
+
+  </div>
 </div>

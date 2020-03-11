@@ -22,6 +22,7 @@ export class FormpeliculaComponent implements OnInit {
   reparto: string[] = [];
   numActores: number = 1;
   formActor: string;
+  public logged: string;
 
   constructor(
     private formBuilder: FormBuilder, private peliculasService: PeliculasService,
@@ -29,7 +30,9 @@ export class FormpeliculaComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.logged = sessionStorage.getItem("logged");
+   }
 
   addActor() {
     this.numActores++;

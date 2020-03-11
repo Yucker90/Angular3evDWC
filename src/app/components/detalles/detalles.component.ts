@@ -22,18 +22,11 @@ export class DetallesComponent implements OnInit {
   reparto: string[] = [];
   recaudacion: number = 0;
   dinero: string = "";
+  public logged: string = "";
 
   ngOnInit() {
-    this.compruebaLogin();
     this.getPelicula();
-  }
-
-  // Este método debería habilitar el botón de Borrar película pero no funciona
-  // TODO
-  compruebaLogin() {
-    if(sessionStorage.getItem("logged")=="true"){
-      document.getElementById("btnBorrar").setAttribute("disabled", "false");
-      }
+    this.logged = sessionStorage.getItem("logged");
   }
 
   // Obtenemos la película de la cual queremos ver los detalles
@@ -53,9 +46,7 @@ export class DetallesComponent implements OnInit {
           this.recaudacion = this.pelicula.Espectadores * 5.5;
           this.dinero = this.recaudacion.toLocaleString('us-US', { style: 'currency', currency: 'USD' });
         }
-      );
-
-
+      );  
   }
 
   // Obtenemos el reparto de la película

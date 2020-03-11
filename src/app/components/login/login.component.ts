@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   // Este método se usa en la carga del componente. Comprobamos si el usuario se ha logueado
   // y si es así, lo redireccionamos a la página principal 
   redireccionPorLogin() {
-    if (sessionStorage.getItem("logged") == "true")
+    if (sessionStorage.getItem("logged") == "ok")
       this.router.navigateByUrl('/');
   }
 
@@ -45,10 +45,10 @@ export class LoginComponent implements OnInit {
 
       // Si nos hemos logueado con éxito, guardamos una variable de sesión que nos servirá para dar
       // "privilegios" de administrador
-      sessionStorage.setItem("logged", "true");
+      sessionStorage.setItem("logged", "ok");
 
       // Cargamos esta segunda variable para evitar un refresco de página infinito
-      sessionStorage.setItem("navRefrescado", "true");
+      sessionStorage.setItem("navRefrescado", "ok");
       
       // Refrescamos la página para que cambie el header
       window.location.reload();

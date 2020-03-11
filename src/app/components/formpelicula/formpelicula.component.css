@@ -23,4 +23,26 @@ form{
     width: 30%;
     height: 2.5em;
     margin-top: 30px;
+    background-image: radial-gradient(rgb(226, 148, 45), rgba(0, 0, 0, 0));
+    background-color: white;
+    text-shadow: 1px 0 black, 0 1px black, 1px 0 black, 0 1px black;
+    height: 2.6em;
+    border: none;
+}
+
+#btnReparto:hover{
+    background-image: radial-gradient(rgb(131, 74, 0), rgba(0, 0, 0, 0));
+}
+
+#btnEnviar{
+    background-image: radial-gradient(rgb(56, 138, 1), rgba(0, 0, 0, 0));
+    background-color: white;
+    text-shadow: 1px 0 black, 0 1px black, 1px 0 black, 0 1px black;
+    width: 10em;
+    height: 2.6em;
+    border: none;
+}
+
+#btnEnviar:hover{
+    background-image: radial-gradient(rgb(2, 48, 12), rgba(0, 0, 0, 0));
 }

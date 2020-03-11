@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import {
-  AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestore
 } from "@angular/fire/firestore";
 import { Pelicula } from "../interfaces/pelicula";
 
@@ -26,12 +25,13 @@ export class PeliculasService {
     this.firestore.collection('peliculas').add(data);
   }
 
-  // Boramos la película que tenga un id determinado
+  // Borramos la película que tenga un id determinado
   deletePelicula(peliculaId: string) {
     this.firestore.collection('peliculas').doc(peliculaId).delete();
   }
 
-  setPelicula(peliculaId: string, data: Pelicula){
+  // Editamos un documento con un id determinado
+  setPelicula(peliculaId: string, data: Pelicula) {
     this.firestore.collection('peliculas').doc(peliculaId).set(data);
   }
 }

@@ -3,6 +3,7 @@ import { Pelicula } from "src/app/interfaces/pelicula";
 import { PeliculasService } from "src/app/services/peliculas.service";
 import { ActivatedRoute } from "@angular/router";
 import { FormControl, FormGroup } from "@angular/forms";
+import {Location} from "@angular/common";
 
 @Component({
   selector: "app-edit",
@@ -22,7 +23,8 @@ export class EditComponent implements OnInit {
 
   constructor(
     private peliculasService: PeliculasService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
   }
 
@@ -47,7 +49,8 @@ export class EditComponent implements OnInit {
         };
 
         console.log("Test 1: " + this.pelicula.Titulo);
-        this.tituloPelicula = this.pelicula.Titulo;
+        this.getReparto();
+        this.tituloPelicula = this.pelicula.Titulo.toUpperCase();
         this.formEditPelicula.setValue({
           titulo: this.pelicula.Titulo,
           director: this.pelicula.Director,
@@ -76,10 +79,13 @@ export class EditComponent implements OnInit {
       {
         Titulo: this.formEditPelicula.get('titulo').value,
         Director: this.formEditPelicula.get('director').value,
-        Year: this.formEditPelicula.get('year').value,
+        Year: this.formEditPelicula.get('anyo').value,
         Espectadores: this.formEditPelicula.get('espectadores').value,
         Reparto: this.reparto
-      })
+      });
   }
 
+  volver(){
+    this.location.back();
+  }
 }
