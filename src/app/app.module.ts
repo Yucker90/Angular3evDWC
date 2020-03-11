@@ -20,6 +20,7 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { RecordsComponent } from './components/records/records.component';
 import { FormpeliculaComponent } from './components/formpelicula/formpelicula.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormpeliculaComponent } from './components/formpelicula/formpelicula.co
     LoginComponent,
     DetallesComponent,
     RecordsComponent,
-    FormpeliculaComponent
+    FormpeliculaComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
