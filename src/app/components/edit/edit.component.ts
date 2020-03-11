@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Pelicula } from "src/app/interfaces/pelicula";
 import { PeliculasService } from "src/app/services/peliculas.service";
 import { ActivatedRoute } from "@angular/router";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-edit",
@@ -11,35 +12,47 @@ import { ActivatedRoute } from "@angular/router";
 export class EditComponent implements OnInit {
   pelicula: Pelicula;
   reparto: string[];
-  director: string;
-  titulo: string;
-  anyo: number;
-  id: string;
-  espectadores: number;
+  public formEditPelicula = new FormGroup({
+    titulo: new FormControl(''),
+    director: new FormControl(''),
+    anyo: new FormControl(''),
+    espectadores: new FormControl('')
+  });
 
   constructor(
     private peliculasService: PeliculasService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getPelicula();
   }
+
+
   getPelicula() {
-    this.director = this.titulo = "";
-    this.anyo = this.espectadores = 0;
     this.reparto = [];
     const id = this.route.snapshot.paramMap.get("id");
-    this.peliculasService.getPelicula(id).subscribe(peliSnapshot => {
-      this.pelicula = peliSnapshot.payload.data() as Pelicula;
-      this.getReparto();
-    });
-/*
-    this.titulo = this.pelicula.titulo;
-    this.director = this.pelicula.director;
-    this.espectadores = this.pelicula.espectadores;
-    this.reparto = this.pelicula.reparto;
-    this.anyo = this.pelicula.year;*/
+    this.peliculasService
+      .getPelicula(id)
+      .subscribe(peliSnapshot => {
+        this.pelicula= {
+          titulo: peliSnapshot.payload.data()['Titulo'],
+          director: peliSnapshot.payload.data()['Director'],
+          espectadores: peliSnapshot.payload.data()['Espectadores'],
+          year: peliSnapshot.payload.data()['Year'],
+          reparto: peliSnapshot.payload.data()['Reparto']
+        };
+        this.getReparto();
+        console.log(this.pelicula);
+        this.formEditPelicula.setValue({
+          titulo: this.pelicula.titulo,
+          director: this.pelicula.director,
+          anyo: this.pelicula.year,
+          espectadores: this.pelicula.espectadores
+        });
+      });
+      
   }
 
   getReparto() {
@@ -48,4 +61,5 @@ export class EditComponent implements OnInit {
       this.reparto.push(element);
     });
   }
+
 }

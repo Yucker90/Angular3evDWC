@@ -1,34 +1,37 @@
 <div id="divExt">
   <div *ngIf="pelicula" class="container grid">
-    <div id="titulo">
-      <h4 class="titulo">Titulo</h4>
-      <p>{{pelicula.Titulo}}</p>
-      <input type="text" [(ngModel)]="titulo" name="titulo" />
-    </div>
-    <div id="director">
-      <h4>Director</h4>
-      <p>{{ pelicula.Director }}</p>
-      <input type="text" [(ngModel)]="director" name="director"/>
-    </div>
+    <h3>Editando {{ pelicula.titulo }}</h3>
+    <form [formGroup]="formEditPelicula">
 
-    <div id="reparto">
-      <h4>Reparto</h4>
-      <div *ngFor="let actor of reparto">
-        {{ actor }}
+      <div id="titulo">       
+        <h4 class="titulo">Titulo</h4>
+        <input type="text" formControlName="titulo" />
       </div>
-    </div>
 
-    <div id="year">
-      <h4>Año</h4>
-      <p>{{ pelicula.Year }}</p>
-      <input type="number" [(ngModel)]="anyo" name="anyo"/>
-    </div>
+      <div id="director">
+        <h4>Director</h4>
+        <input type="text" formControlName="director" />
+      </div>
+<!--
+      <div id="reparto">
+        <h4>Reparto</h4>
+        <div *ngFor="let actor of reparto">
+          {{ actor }}
+        </div>
+      </div>
+-->
+      <div id="year">
+        <h4>Año</h4>
+        <input type="number" formControlName="anyo" />
+      </div>
 
-    <div id="recaudacion">
-      <h4>Espectadores</h4>
-      <p>{{ pelicula.espectadores }}</p>
-      <input type="text" [(ngModel)]="espectadores" name="espectadores"/>
-    </div>
+      <div id="recaudacion">
+        <h4>Espectadores</h4>
+        <input type="text" formControlName="espectadores" />
+      </div>
+
+      <button (click)="guardar()" class="btn btn-success">Guardar</button>
+    </form>
   </div>
   <div hidden id="btnBorrar">
     <button class="btn btn-danger" (click)="borrar()">Borrar</button>
