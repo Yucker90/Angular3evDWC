@@ -10,6 +10,7 @@ import { Location} from '@angular/common';
   styleUrls: ["./detalles.component.css"]
 })
 export class DetallesComponent implements OnInit {
+  id: string;
   constructor(
     private peliculasService: PeliculasService,
     private route: ActivatedRoute,
@@ -38,6 +39,7 @@ export class DetallesComponent implements OnInit {
   // Obtenemos la película de la cual queremos ver los detalles
   getPelicula() {
     const id = this.route.snapshot.paramMap.get("id");
+    this.id = id;
     this.peliculasService
       .getPelicula(id)
       .subscribe(
