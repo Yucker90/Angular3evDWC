@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 
 export class FormpeliculaComponent implements OnInit {
+  // Formulario de creación de una película
   FormularioPeli = this.formBuilder.group({
     titulo: new FormControl(""),
     director: new FormControl(""),
@@ -19,24 +20,32 @@ export class FormpeliculaComponent implements OnInit {
     espectadores: new FormControl("")
   });
 
+  // Variable para añadir los actores
   reparto: string[] = [];
+  // Variable que usaré para el id de los inputs generados dinámicamente
   numActores: number = 1;
+  // Nombre del actor a añadir
   formActor: string;
+  // Variable que me indica si el usuario está identificado o no
   public logged: string;
 
   constructor(
     private formBuilder: FormBuilder, private peliculasService: PeliculasService,
-    private router: Router
   ) {
   }
 
   ngOnInit() {
+    // Miro si el usuario está identificado o no
     this.logged = sessionStorage.getItem("logged");
    }
 
   addActor() {
+    // Como ya hay un input, el siguiente que se añadiría sería el 2
     this.numActores++;
+
+    // Añado el actor al array, usando binding bidireccional
    this.reparto.push(this.formActor);
+   // Creo un elemento p, para mostrar los actores que hemos ido añadiendo
    let input = document.createElement("p");
    input.appendChild(document.createTextNode("Actor "+ (this.numActores-1)+ ": " + this.formActor));
     input.setAttribute("style", "margin-top: 4px");
@@ -44,10 +53,9 @@ export class FormpeliculaComponent implements OnInit {
     document.getElementById("actores").appendChild(input);
     document.getElementById("actor").setAttribute("placeholder", "Actor "+ this.numActores);
     this.formActor="";
-    console.log(this.reparto);
   }
 
-
+// Envío los datos del formulario y del array a la base de datos y refresco la página para vaciar los campos
   enviar() {
     let data = {
       Titulo: this.FormularioPeli.get("titulo").value,

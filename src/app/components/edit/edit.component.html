@@ -1,5 +1,5 @@
 <div id="divExt">
-  <div *ngIf="pelicula" class="container grid">
+  <div *ngIf="pelicula && logged == 'ok'" class="container grid">
     <h3>Editando {{ tituloPelicula }}</h3>
     <form [formGroup]="formEditPelicula">
       <div id="titulo">

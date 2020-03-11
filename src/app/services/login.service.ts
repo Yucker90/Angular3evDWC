@@ -8,20 +8,6 @@ export class LoginService {
   constructor(private firestore: AngularFirestore) {}
   logged: boolean = false;
 
-  /* compruebaUsuario(user: string, pass: string) {
-    this.firestore
-      .collection("usuarios")
-      .doc(user)
-      .snapshotChanges()
-      .subscribe(userSnapshot => {
-        this.logged = userSnapshot.payload.get("password") == pass;
-        console.log("Comprobación en servicio: " + this.logged);
-        return this.logged;
-      });
-    return this.logged;
-  }
-  */
-
   async compruebaUsuario(user: string, pass: string) {
     const passfb = await this.firestore
       .collection("usuarios")

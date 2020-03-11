@@ -20,6 +20,7 @@ export class EditComponent implements OnInit {
     espectadores: new FormControl('')
   });
   tituloPelicula: string;
+  public logged: string;
 
   constructor(
     private peliculasService: PeliculasService,
@@ -30,9 +31,12 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.getPelicula();
+
+    // Compruebo si el usuario se ha identificado para permitir o no la edición de una película
+    this.logged = sessionStorage.getItem("logged");
   }
 
-
+// Obtengo una película y cargo sus datos en el formulario para su edición
   getPelicula() {
     this.reparto = [];
     this.tituloPelicula = "";
@@ -48,19 +52,21 @@ export class EditComponent implements OnInit {
           Reparto: peliSnapshot.payload.data()['Reparto']
         };
 
-        console.log("Test 1: " + this.pelicula.Titulo);
+        // Obtengo el reparto de la película
         this.getReparto();
+
+        // Cargo en una variable el título, para poder mostrarlo en la cabecera
         this.tituloPelicula = this.pelicula.Titulo.toUpperCase();
+
+        // Cargo los datos de la película en el formulario
         this.formEditPelicula.setValue({
           titulo: this.pelicula.Titulo,
           director: this.pelicula.Director,
           anyo: this.pelicula.Year,
           espectadores: this.pelicula.Espectadores
         });
-        console.log("Test 2: " + this.pelicula);
 
       });
-    console.log("Test 3: " + this.pelicula);
   }
 
 
@@ -72,6 +78,7 @@ export class EditComponent implements OnInit {
     });
   }
 
+// Guardo los datos de la película en la base de datos
   guardar() {
     const id = this.route.snapshot.paramMap.get("id");
 
@@ -85,6 +92,7 @@ export class EditComponent implements OnInit {
       });
   }
 
+  // Vuelvo a la página anterior
   volver(){
     this.location.back();
   }
